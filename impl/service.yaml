@@ -1,0 +1,72 @@
+openapi: 3.0.2
+info:
+  version: impl
+  title: 'Wet Grass Bayes'
+  description: hello wet grass
+servers:
+  - url: /jue/wetgrassbn/impl
+    description: Hello world
+paths:
+  /welcome:
+    post:
+      description: Welcome.
+      operationId: welcome
+      requestBody:
+        description: inputs
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/input'
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/output'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: 'https://demo.kgrid.org/schemas/basicerror.yaml'
+      x-kgrid-activation:
+        artifact: src/index.js
+        adapter: JAVASCRIPT
+        entry: welcome
+components:
+  schemas:
+    input:
+      required:
+        - name
+        - last_name
+        - cloudy
+        - sprinkler
+        - rain
+        - wetgrass
+      properties:
+        name:
+          type: string
+          example: Bob
+        last_name:
+          type: string
+          example: Jones
+        cloudy:
+          type: string
+          example: null
+        sprinkler:
+          type: string
+          example: null
+        rain:
+          type: string
+          example: null
+        wetgrass:
+          type: string
+          example: null
+    output:
+      required:
+        - result
+      properties:
+        result:
+          type: object

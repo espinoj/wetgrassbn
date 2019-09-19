@@ -1,0 +1,10 @@
+{
+    "@id": "impl",
+    "@type": "koio:Implementation",
+    "identifier": "ark:/jue/wetgrassbn/impl",
+    "title": "Wet Grass Bayes",
+    "hasServiceSpecification": "impl/service.yaml",
+    "@context": [
+        "http://kgrid.org/koio/contexts/implementation.jsonld"
+    ]
+}
