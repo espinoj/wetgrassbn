@@ -5,12 +5,12 @@ info:
   description: hello wet grass
 servers:
   - url: /jue/wetgrassbn/impl
-    description: Hello world
+    description: Wet Grass Bayesian Network
 paths:
-  /welcome:
+  /calculate:
     post:
-      description: Welcome.
-      operationId: welcome
+      description: performs inteference calculation.
+      operationId: calculate
       requestBody:
         description: inputs
         required: true
@@ -34,24 +34,16 @@ paths:
       x-kgrid-activation:
         artifact: src/index.js
         adapter: JAVASCRIPT
-        entry: welcome
+        entry: calculate
 components:
   schemas:
     input:
       required:
-        - name
-        - last_name
         - cloudy
         - sprinkler
         - rain
         - wetgrass
       properties:
-        name:
-          type: string
-          example: Bob
-        last_name:
-          type: string
-          example: Jones
         cloudy:
           type: string
           example: null
