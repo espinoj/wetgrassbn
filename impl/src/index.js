@@ -1,4 +1,4 @@
-function welcome(inputs){
+function calculate(inputs){
     'use strict';
 
     /**
@@ -493,8 +493,17 @@ function welcome(inputs){
         ]
     ];
 
+
+    // set the evidence
+    if (cloudy) g.observe('cloudy',cloudy);
+    if (wetgrass) g.observe('wetgrass', wetgrass);
+    if (sprinkler) g.observe('sprinkler', sprinkler);
+    if (rain) g.observe('rain', rain);
+
+    // perform inference
     g.sample(10000);
 
+    // output the posteriors
     var cloudyTrue = nCloudy.probs()[0];
     var rainTrue = nRain.probs()[0];
     var sprinklerTrue = nSprinkler.probs()[0];
